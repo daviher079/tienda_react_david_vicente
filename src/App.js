@@ -1,28 +1,26 @@
 import './App.css';
-import ListaProductos from './components/ListaProductos';
-import { useState, useEffect } from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import NotFoundPage from './pages/NotFoundPage';
+import Inicio from './pages/Inicio';
+import InicioCategoria from './pages/InicioCategoria';
 
 function App() {
 
-  const [productos, setProductos] = useState([]);
 
-  useEffect(()=>
-  {
-    const misProductos = async() =>
-    {
-      let peticion ='http://localhost:8080/productos/all';
-      const peticionInicial = await fetch(peticion);
-      const peticionResultados = await peticionInicial.json();
-      setProductos(peticionResultados);
-    }
-    misProductos()
-  }, []);
-
- 
   return(
-    <div className="container">
-     <ListaProductos productos={productos}></ListaProductos>
-    </div>
+
+<Router>
+        <Routes>
+          <Route path="/" element={<Inicio></Inicio>} />
+          <Route path="/categoria/:name" element={<InicioCategoria></InicioCategoria>} />
+          
+         
+          <Route path='*' element={<NotFoundPage />}/>
+        </Routes>
+    </Router>
+
+
   )
 }
 
