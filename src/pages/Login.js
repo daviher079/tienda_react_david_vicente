@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../context/UserContext";
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
   const {mail, setMail} = useContext(UserContext)
-  // const navigate = useNavigate();
+    const navigate = useNavigate();
   //
   const [user, setUser] = useState({
     mail: "",
@@ -25,13 +26,13 @@ export default function Login() {
     if(peticionInicial.ok===true){
         console.log("Todo ok Jose Luis")
         setMail(user.mail);
-        console.log(mail)
+        navigate("/");
        
     }else{
         console.log("No ok Jose Luis")
     }
 
-
+    
 
 
     

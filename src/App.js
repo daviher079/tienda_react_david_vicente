@@ -7,7 +7,7 @@ import Inicio from "./pages/Inicio";
 import InicioCategoria from "./pages/InicioCategoria";
 
 import Login from "./pages/Login";
-import UserContext, { UserProvider } from "./context/UserContext";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   return (
