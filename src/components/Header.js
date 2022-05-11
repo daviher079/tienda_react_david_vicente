@@ -6,12 +6,17 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../context/UserContext";
+
 
 function Header(props) {
   const { categorias } = props;
+  const { mail } = useContext(UserContext);
   return (
 
     <Navbar className="cabecera" expand="lg">
+      <p>{mail}</p>
   <Container fluid>
     <Navbar.Brand href="#home"> <img
             className="logo_centro"
@@ -45,7 +50,7 @@ function Header(props) {
     <Nav.Link className="text-dark" href="/home"> <AiOutlineShoppingCart/> Carrito</Nav.Link>
   </Nav.Item>
   <Nav.Item className="btn btn-outline-light">
-    <Nav.Link className="text-dark" href="/home">Login</Nav.Link>
+    <Nav.Link className="text-dark" href="/Login">Login</Nav.Link>
   </Nav.Item>
   </Container>
 </Navbar>

@@ -4,10 +4,9 @@ import ListaProductos from '../components/ListaProductos';
 import Banner from '../components/Banner';
 import Header from '../components/Header';
 
-import { useParams } from 'react-router-dom';
 function Inicio(){
 
-    let { name } = useParams();
+    
     const [productos, setProductos] = useState([]);
 
     useEffect(()=>
