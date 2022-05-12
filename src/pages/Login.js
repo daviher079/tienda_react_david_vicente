@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../context/UserContext";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const {mail, setMail} = useContext(UserContext)
-    const navigate = useNavigate();
+  const { mail, setMail } = useContext(UserContext);
+  const navigate = useNavigate();
   //
   const [user, setUser] = useState({
     mail: "",
@@ -19,23 +19,20 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let peticion = `http://localhost:8080/usuarios/findByMail/${user.mail}/${user.password}`;
-    const peticionInicial = await fetch(peticion,{
-        method:"POST"
+    const peticionInicial = await fetch(peticion, {
+      method: "POST",
     });
-    
-    if(peticionInicial.ok===true){
-        console.log("Todo ok Jose Luis")
-        setMail(user.mail);
-        navigate("/");
-       
-    }else{
-        console.log("No ok Jose Luis")
+
+    if (peticionInicial.ok === true) {
+      console.log("Todo ok Jose Luis");
+      setMail(user.mail);
+
+      sessionStorage.setItem("mail", user.mail);
+
+      navigate("/");
+    } else {
+      console.log("No ok Jose Luis");
     }
-
-    
-
-
-    
   };
 
   return (
@@ -61,7 +58,7 @@ export default function Login() {
 
           <section className="botonera-login">
             <Link to="./RegistrarUsuarios">Nuevo Usuario</Link>
-            <button onClick={handleSubmit}>Login</button>  
+            <button onClick={handleSubmit}>Login</button>
           </section>
         </form>
       </main>

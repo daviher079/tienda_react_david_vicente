@@ -4,7 +4,7 @@ const UserContext = createContext();
 
 export function UserProvider({children}){
     const [mail, setMail] = useState();
-    console.log(mail)
+    
     return(
         <UserContext.Provider value={{mail, setMail}}>{children}</UserContext.Provider>
     );

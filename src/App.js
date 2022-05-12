@@ -7,6 +7,7 @@ import Inicio from "./pages/Inicio";
 import InicioCategoria from "./pages/InicioCategoria";
 
 import Login from "./pages/Login";
+import VerPerfil from "./pages/VerPerfil"
 import { UserProvider } from "./context/UserContext";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             element={<InicioCategoria></InicioCategoria>}
           />
           <Route path="/Login" element={<Login />} />
+          <Route path="/VerPerfil" element={<VerPerfil />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
