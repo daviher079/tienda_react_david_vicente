@@ -1,10 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import UserContext from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import "../assets/css/login.css"
+
+
+
+
 
 export default function Login() {
-  const { mail, setMail } = useContext(UserContext);
+  
   const navigate = useNavigate();
   //
   const [user, setUser] = useState({
@@ -25,7 +29,7 @@ export default function Login() {
 
     if (peticionInicial.ok === true) {
       console.log("Todo ok Jose Luis");
-      setMail(user.mail);
+      
 
       sessionStorage.setItem("mail", user.mail);
 
@@ -35,33 +39,57 @@ export default function Login() {
     }
   };
 
+
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Registrar usuario</h2>
-      </header>
-      <main className="App-main">
-        <form method="post">
-          <section>
-            <label htmlFor="mail">
-              Email
-              <input type="email" name="mail" onChange={handleChange} />
-            </label>
-          </section>
 
-          <section>
-            <label htmlFor="password">
-              Pass
-              <input type="password" name="password" onChange={handleChange} />
-            </label>
-          </section>
-
-          <section className="botonera-login">
-            <Link to="./RegistrarUsuarios">Nuevo Usuario</Link>
-            <button onClick={handleSubmit}>Login</button>
-          </section>
-        </form>
-      </main>
-    </div>
+    <section className="ftco-section">
+		<div className="container">
+			<div className="row justify-content-center">
+				<div className="col-md-6 text-center mb-5">
+					<h2 className="heading-section">INTRODUCE TUS DATOS</h2>
+				</div>
+			</div>
+			<div className="row justify-content-center">
+				<div className="col-md-12 col-lg-10">
+					<div className="wrap d-md-flex">
+						<div className="img">
+              
+			      </div>
+						<div className="login-wrap p-4 p-md-5">
+						
+							<form method="POST" className="signin-form">
+			      		<div className="form-group mb-3">
+			      			<label className="label" htmlFor="mail">Nombre </label>
+			      			<input type="email" name="mail" onChange={handleChange} className="form-control" required/>
+			      		</div>
+		            <div className="form-group mb-3">
+		            	<label className="label" htmlFor="password">Password</label>
+		            	<input type="password" name="password" onChange={handleChange} className="form-control" required/>
+		             
+		            </div>
+		            <div className="form-group">
+		            	
+		            	<button onClick={handleSubmit} className="form-control btn btn-primary rounded submit px-3" >Login</button>
+		            </div>
+		            <div className="form-group d-md-flex">
+		            	<div className="w-50 text-left">
+                  <Link to="/">Volver</Link>
+			            	
+									</div>
+									<div className="w-50 text-md-right">
+									<Link to="./RegistrarUsuarios">Nuevo Usuario</Link>
+									</div>
+		            </div>
+		          </form>
+		          
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
   );
 }

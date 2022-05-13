@@ -32,7 +32,7 @@ function Header(props) {
     <Navbar className="cabecera" expand="lg">
      
       <Container fluid>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           {" "}
           <img
             className="logo_centro"
